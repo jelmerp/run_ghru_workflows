@@ -1,9 +1,7 @@
 #!/bin/bash
 
-#TODO MAKE REPOS OF GHRU WORKFLOWS
-
 # ==============================================================================
-#                        RUN THE GHRU WORKLOWS
+#                        RUN THE MODIFIED GHRU WORKLOWS
 # ==============================================================================
 # Input files and settings
 fq_dir=$PWD/data/fastq/samantha_renamed
@@ -16,14 +14,14 @@ assembly_script=$PWD/mcic-scripts/bact/ghru_assembly.sh
 mlst_script=$PWD/mcic-scripts/bact/ghru_mlst.sh
 ariba_script=$PWD/mcic-scripts/bact/ghru_ariba.sh
 phylo_script=$PWD/mcic-scripts/bact/ghru_phylogeny.sh
-finder_script=$PWD/mcic-scripts/bact/ghru_finder.sh
+bactfinder_script=$PWD/mcic-scripts/bact/nf_bactfinder.sh
 
 # Output dirs for the workflows
-assembly_outdir=results/ghru_assembly
-mlst_outdir=results/ghru_mlst
-ariba_outdir=results/ghru_ariba
-phylo_outdir=results/ghru_phylo
-finder_outdir=results/ghru_finder
+assembly_outdir=$PWD/results/ghru_assembly
+mlst_outdir=$PWD/results/ghru_mlst
+ariba_outdir=$PWD/results/ghru_ariba
+phylo_outdir=$PWD/results/ghru_phylo
+bactfinder_outdir=$PWD/results/nf_bactfinder
 
 # Assemblies will (tend to...) end up here - these are input for the finder workflow  
 asm_dir="$assembly_outdir"/assemblies/warning
@@ -45,8 +43,8 @@ asm_dir="$assembly_outdir"/assemblies/warning
     sbatch "$phylo_script" --indir "$fq_dir" --reference "$ref_genome" --outdir .)
 
 # Resfinder, Virulencefinder, and Plasmidfinder 
-(mkdir -p "$finder_outdir" && cd "$finder_outdir" && \
-    sbatch "$finder_script" --indir "$asm_dir" --species "$species" --outdir .)
+(mkdir -p "$bactfinder_outdir" && cd "$bactfinder_outdir" && \
+    sbatch "$bactfinder_script" --indir "$asm_dir" --species "$species" --outdir .)
 
 
 # ==============================================================================
