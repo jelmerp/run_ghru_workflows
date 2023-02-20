@@ -1,21 +1,27 @@
-# Info on running the GHRU workflows
+# Info on running the modified GHRU workflows
 
 - Use the code in the submission script `run/run_ghru.sh`.
 
-- Check the options for each of the scripts below using '-h' or '--help':
+- Check the options for each of the scripts below using the '-h' option:
 
 ```bash
-bash mcic-scripts/bact/ghru_assembly.sh --help
-bash mcic-scripts/bact/ghru_mlst.sh --help
-bash mcic-scripts/bact/ghru_ariba.sh --help
-bash mcic-scripts/bact/nf_resfinder.sh --help
+bash mcic-scripts/bact/ghru_assembly.sh -h
+bash mcic-scripts/bact/ghru_mlst.sh -h
+bash mcic-scripts/bact/ghru_ariba.sh -h
+bash workflows/mcic-scripts/bact/nf_bactfinder.sh --help
 ```
 
-- Make sure to update your copy of the mcic-scripts repo:
-(cd mcic-scripts && git pull)
+- Make sure to update your copy of the `mcic-scripts` repository by running:
+
+```bash
+cd mcic-scripts && git pull
+```
 
 - Or if you haven't downloaded the repository yet, run:
+
+```bash
 git clone https://github.com/mcic-osu/mcic-scripts.git
+```
 
 - There is no need to copy any other files!
 
