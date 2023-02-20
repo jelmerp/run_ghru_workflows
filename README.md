@@ -8,7 +8,7 @@
 bash mcic-scripts/bact/ghru_assembly.sh -h
 bash mcic-scripts/bact/ghru_mlst.sh -h
 bash mcic-scripts/bact/ghru_ariba.sh -h
-bash workflows/mcic-scripts/bact/nf_bactfinder.sh --help
+bash mcic-scripts/bact/nf_bactfinder.sh -h
 ```
 
 - Make sure to update your copy of the `mcic-scripts` repository by running:
